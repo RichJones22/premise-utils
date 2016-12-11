@@ -17,6 +17,7 @@ class PremiseUtilitiesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //
     }
 
     /**
