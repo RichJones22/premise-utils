@@ -1,6 +1,8 @@
 {
     "name": "premise/utilities",
-    "psr-4": {
-        "Premise\\Utilities\\": "src/"
+    "autoload": {
+        "psr-4" : {
+            "Premise\\Utilities\\": "./src"
+        }
     }
 }
