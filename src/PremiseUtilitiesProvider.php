@@ -1,6 +1,6 @@
 <?php
 
-namespace premise\utilities;
+namespace Premise\Utilities;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +23,6 @@ class PremiseUtilitiesProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->make(PremiseUtilities::class);
     }
 }
