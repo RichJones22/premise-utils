@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace premise\utilities;
+namespace Premise\Utilities;
 
 use DirectoryIterator;
 
