@@ -1,7 +1,7 @@
 {
     "name": "premise/utilities",
     "description": "File and directory utilities",
-    "type": "composer-plugin",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
