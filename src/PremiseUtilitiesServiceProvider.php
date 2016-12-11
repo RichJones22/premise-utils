@@ -1,28 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Premise\Utilities;
 
+use App;
 use Illuminate\Support\ServiceProvider;
 
-class PremiseUtilitiesProvider extends ServiceProvider
+/**
+ * Class PremiseUtilitiesServiceProvider.
+ */
+class PremiseUtilitiesServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
-     *
-     * @return void
      */
     public function boot()
     {
-        //
     }
 
     /**
      * Register the application services.
-     *
-     * @return void
      */
     public function register()
     {
-        $this->app->make(PremiseUtilities::class);
+        App::make(PremiseUtilities::class);
     }
 }

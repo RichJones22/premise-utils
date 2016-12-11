@@ -1,16 +1,6 @@
 {
     "name": "premise/utilities",
-    "description": "File and directory utilities",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Rich Jones",
-            "email": "jones_rich@yahoo.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "PHP": ">=5.3.0"
+    "psr-4": {
+        "Premise\\Utilities\\": "src/"
     }
 }
