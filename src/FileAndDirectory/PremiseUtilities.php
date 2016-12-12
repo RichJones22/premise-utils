@@ -79,7 +79,6 @@ class PremiseUtilities
         $iterator = new \RecursiveIteratorIterator($directory);
         foreach ($iterator as $fileInfo) {
             if (preg_match($matchString, $fileInfo->getFilename())) {
-                //                dd($fileInfo);
                 $files[] = $fileInfo->getPathName();
             }
         }
