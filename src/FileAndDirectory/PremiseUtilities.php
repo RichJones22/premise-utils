@@ -48,7 +48,7 @@ class PremiseUtilities
     }
 
     /**
-     * returns files objects of type DirectoryIterator.
+     * returns array of SplFileInfo for files in dir.
      *
      * culls for a specific file extension, ext; or not... does both...
      *
@@ -57,7 +57,7 @@ class PremiseUtilities
      *
      * @return array|DirectoryIterator
      */
-    public static function getFileObjectsForDirectory($path, $ext = null)
+    public static function getSplFileInfoForFilesInDirectory($path, $ext = null)
     {
         $matchString = '/^.+\.'.$ext.'$/i';
 
