@@ -55,31 +55,32 @@ class PremiseUtilities
      * @param $path
      * @param null $ext
      *
-     * @return array|DirectoryIterator
+     * @return SplFileInfo
      */
     public static function getSplFileInfoForFilesInDirectory($path, $ext = null)
     {
         $matchString = '/^.+\.'.$ext.'$/i';
 
-        $files = [];
-        $dir = new DirectoryIterator($path);
+        /** @var SplFileInfo $result */
+        $result = [];
 
+        $dir = new DirectoryIterator($path);
         /** @var DirectoryIterator $fileInfo */
         foreach ($dir as $fileInfo) {
             if ($fileInfo->isFile()) {
                 // any file extension is okay.
                 if ($ext === null) {
-                    $files[] = new SplFileInfo($fileInfo->getPathName());
+                    $result[] = new SplFileInfo($fileInfo->getPathName());
                 } else {
                     // only looking for a specific file extension
                     if (preg_match($matchString, $fileInfo->getFilename())) {
-                        $files[] = new SplFileInfo($fileInfo->getPathName());
+                        $result[] = new SplFileInfo($fileInfo->getPathName());
                     }
                 }
             }
         }
 
-        return $files;
+        return $result;
     }
 
     /**
