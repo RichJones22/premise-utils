@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Premise\Utilities;
 
 use DirectoryIterator;
+use SplFileInfo;
 
 /**
  * Class PremiseUtilities.
@@ -56,7 +57,7 @@ class PremiseUtilities
      *
      * @return array|DirectoryIterator
      */
-    public static function getFileObjectsForDirectory($path, $ext = null): DirectoryIterator
+    public static function getFileObjectsForDirectory($path, $ext = null): SplFileInfo
     {
         $matchString = '/^.+\.'.$ext.'$/i';
 
@@ -68,11 +69,11 @@ class PremiseUtilities
             if ($fileInfo->isFile()) {
                 // any file extension is okay.
                 if ($ext === null) {
-                    $files[] = new DirectoryIterator($fileInfo->getFilename());
+                    $files[] = new SplFileInfo($fileInfo->getFilename());
                 } else {
                     // only looking for a specific file extension
                     if (preg_match($matchString, $fileInfo->getFilename())) {
-                        $files[] = new DirectoryIterator($fileInfo->getFilename());
+                        $files[] = new SplFileInfo($fileInfo->getFilename());
                     }
                 }
             }
