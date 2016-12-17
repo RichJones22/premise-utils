@@ -57,7 +57,7 @@ class PremiseUtilities
      *
      * @return array|DirectoryIterator
      */
-    public static function getFileObjectsForDirectory($path, $ext = null): SplFileInfo
+    public static function getFileObjectsForDirectory($path, $ext = null)
     {
         $matchString = '/^.+\.'.$ext.'$/i';
 
@@ -69,11 +69,11 @@ class PremiseUtilities
             if ($fileInfo->isFile()) {
                 // any file extension is okay.
                 if ($ext === null) {
-                    $files[] = new SplFileInfo($fileInfo->getFilename());
+                    $files[] = new SplFileInfo($fileInfo->getPathName());
                 } else {
                     // only looking for a specific file extension
                     if (preg_match($matchString, $fileInfo->getFilename())) {
-                        $files[] = new SplFileInfo($fileInfo->getFilename());
+                        $files[] = new SplFileInfo($fileInfo->getPathName());
                     }
                 }
             }
