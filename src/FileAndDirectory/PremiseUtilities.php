@@ -31,12 +31,10 @@ class PremiseUtilities
         /** @var DirectoryIterator $fileInfo */
         foreach ($dir as $fileInfo) {
             if ($fileInfo->isFile()) {
-
                 // any file extension is okay.
                 if ($ext === null) {
                     $files[] = $fileInfo->getFilename();
                 } else {
-
                     // only looking for a specific file extension
                     if (preg_match($matchString, $fileInfo->getFilename())) {
                         $files[] = $fileInfo->getPathName();
@@ -56,9 +54,9 @@ class PremiseUtilities
      * @param $path
      * @param null $ext
      *
-     * @return array
+     * @return array|DirectoryIterator
      */
-    public static function getFileObjectsForDirectory($path, $ext = null)
+    public static function getFileObjectsForDirectory($path, $ext = null): DirectoryIterator
     {
         $matchString = '/^.+\.'.$ext.'$/i';
 
@@ -68,15 +66,13 @@ class PremiseUtilities
         /** @var DirectoryIterator $fileInfo */
         foreach ($dir as $fileInfo) {
             if ($fileInfo->isFile()) {
-
                 // any file extension is okay.
                 if ($ext === null) {
-                    $files[] = $fileInfo;
+                    $files[] = new DirectoryIterator($fileInfo->getFilename());
                 } else {
-
                     // only looking for a specific file extension
                     if (preg_match($matchString, $fileInfo->getFilename())) {
-                        $files[] = $fileInfo;
+                        $files[] = new DirectoryIterator($fileInfo->getFilename());
                     }
                 }
             }
