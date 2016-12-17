@@ -12,6 +12,8 @@ use DirectoryIterator;
 class PremiseUtilities
 {
     /**
+     * returns files as strings.
+     *
      * culls for a specific file extension, ext; or not... does both...
      *
      * @param $path
@@ -38,6 +40,43 @@ class PremiseUtilities
                     // only looking for a specific file extension
                     if (preg_match($matchString, $fileInfo->getFilename())) {
                         $files[] = $fileInfo->getPathName();
+                    }
+                }
+            }
+        }
+
+        return $files;
+    }
+
+    /**
+     * returns files objects of type DirectoryIterator.
+     *
+     * culls for a specific file extension, ext; or not... does both...
+     *
+     * @param $path
+     * @param null $ext
+     *
+     * @return array
+     */
+    public static function getFileObjectsForDirectory($path, $ext = null)
+    {
+        $matchString = '/^.+\.'.$ext.'$/i';
+
+        $files = [];
+        $dir = new DirectoryIterator($path);
+
+        /** @var DirectoryIterator $fileInfo */
+        foreach ($dir as $fileInfo) {
+            if ($fileInfo->isFile()) {
+
+                // any file extension is okay.
+                if ($ext === null) {
+                    $files[] = $fileInfo;
+                } else {
+
+                    // only looking for a specific file extension
+                    if (preg_match($matchString, $fileInfo->getFilename())) {
+                        $files[] = $fileInfo;
                     }
                 }
             }
