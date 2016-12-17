@@ -12,17 +12,34 @@ use DirectoryIterator;
 class PremiseUtilities
 {
     /**
+     * culls for a specific file extension, ext; or not... does both...
+     *
      * @param $path
+     * @param null $ext
      *
      * @return array
      */
-    public static function getFileForDirectory($path)
+    public static function getFileForDirectory($path, $ext = null)
     {
+        $matchString = '/^.+\.'.$ext.'$/i';
+
         $files = [];
         $dir = new DirectoryIterator($path);
+
+        /** @var DirectoryIterator $fileInfo */
         foreach ($dir as $fileInfo) {
             if ($fileInfo->isFile()) {
-                $files[] = $fileInfo->getFilename();
+
+                // any file extension is okay.
+                if ($ext === null) {
+                    $files[] = $fileInfo->getFilename();
+                } else {
+
+                    // only looking for a specific file extension
+                    if (preg_match($matchString, $fileInfo->getFilename())) {
+                        $files[] = $fileInfo->getPathName();
+                    }
+                }
             }
         }
 
