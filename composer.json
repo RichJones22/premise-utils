@@ -2,7 +2,12 @@
     "name": "premise/utilities",
     "autoload": {
         "psr-4" : {
-            "Premise\\Utilities\\": "./src"
+            "Premise\\Utilities\\": "./src",
+            "Premise\\Tests\\": "./tests"
         }
+    },
+    "require": {
+        "nesbot/carbon": "^1.21",
+        "phpunit/phpunit": "^5.7"
     }
 }
