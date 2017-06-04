@@ -1,5 +1,16 @@
 {
     "name": "premise/utilities",
+    "description": "General utilities for all; but, primarily for Premise Software Solutions...",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rich Jones",
+            "email": "jones_rich@yahoo.com",
+            "homepage": "http://www.premisesoftware.com",
+            "role": "Developer"
+        }
+    ],
     "autoload": {
         "psr-4" : {
             "Premise\\Utilities\\": "./src",
