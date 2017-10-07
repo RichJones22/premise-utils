@@ -19,5 +19,12 @@
     },
     "require": {
         "nesbot/carbon": "^1.21"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "App\\Providers\\ezSlotServiceProvider"
+            ]
+        }
     }
 }
